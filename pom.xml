@@ -17,6 +17,7 @@
     <module>xiaohashu-auth</module>
     <module>xiaoha-framework</module>
     <module>xiaoha-framework/xiaoha-common</module>
+    <module>xiaoha-framework/xiaoha-spring-boot-starter-biz-operationlog</module>
   </modules>
 
   <!-- 多模块项目需要配置打包方式为 pom -->
@@ -102,6 +103,14 @@
         <artifactId>jackson-core</artifactId>
         <version>${jackson.version}</version>
       </dependency>
+
+      <!-- 业务接口日志组件 -->
+      <dependency>
+        <groupId>com.quanxiaoha</groupId>
+        <artifactId>xiaoha-spring-boot-starter-biz-operationlog</artifactId>
+        <version>${revision}</version>
+      </dependency>
+
     </dependencies>
 
 
