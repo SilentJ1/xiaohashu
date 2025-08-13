@@ -13,19 +13,20 @@
   <!-- 项目描述 -->
   <description>小哈书（仿小红书），基于 Spring Cloud Alibaba 微服务架构</description>
 
+  <modules>
+    <module>xiaohashu-auth</module>
+    <module>xiaoha-framework</module>
+    <module>xiaoha-framework/xiaoha-common</module>
+  </modules>
+
   <!-- 多模块项目需要配置打包方式为 pom -->
   <packaging>pom</packaging>
 
-  <!-- 子模块管理 -->
-<!--  <modules>-->
-<!--    &lt;!&ndash; 认证服务 &ndash;&gt;-->
-<!--    <module>xiaohashu-auth</module>-->
-<!--    <module>xiaoha-framework</module>-->
-<!--  </modules>-->
+
 
   <properties>
     <!-- 项目版本号 -->
-    <revision>0.0.1-SNAPSHOT</revision>
+    <revision>1.0-SNAPSHOT</revision>
     <!-- JDK 版本 -->
     <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -86,7 +87,7 @@
       <dependency>
         <groupId>com.quanxiaoha</groupId>
         <artifactId>xiaoha-common</artifactId>
-        <version>#{revision}</version>
+        <version>${revision}</version>
       </dependency>
 
       <!-- Jackson -->

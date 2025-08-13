@@ -21,10 +21,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.xiaohashu</groupId>-->
-<!--            <artifactId>xiaoha-common</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.quanxiaoha</groupId>
+            <artifactId>xiaoha-common</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
