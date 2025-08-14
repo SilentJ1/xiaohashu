@@ -8,28 +8,29 @@
     </parent>
     <!--  指定打包方式  -->
     <packaging>jar</packaging>
-    <artifactId>xiaoha-common</artifactId>
+    <artifactId>xiaoha-spring-boot-starter-jackson</artifactId>
     <name>${project.artifactId}</name>
-    <description>平台通用模块，如一些通用枚举、工具类等等</description>
+    <description>自定义 Jackson 配置: 支持 Java 8 新的日期 API，如 LocalDateTime、LocalDate 等等</description>
     <dependencies>
-        <!--  避免编写那些冗余的 Java 样板式代码，如 get、set 方法等  -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.quanxiaoha</groupId>
+            <artifactId>xiaoha-common</artifactId>
         </dependency>
-        <!--  Jackson  -->
+        <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
-        <!--  解决 Jackson Java 8 新日期 API 的序列化问题  -->
         <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 </project>
