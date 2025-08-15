@@ -16,6 +16,7 @@ public class PhoneNumberValidator implements ConstraintValidator<PhoneNumber, St
     /**
      * initialize 方法是用来执行初始化操作的。这个方法在校验器实例化后会被调用，
      * 通常用来读取注解中的参数来设置校验器的初始状态。在这里，我们没有任何初始化操作，所以方法体是空的。
+     *
      * @param constraintAnnotation
      */
     @Override
