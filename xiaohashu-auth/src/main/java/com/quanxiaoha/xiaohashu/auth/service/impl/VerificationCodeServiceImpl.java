@@ -3,7 +3,7 @@ package com.quanxiaoha.xiaohashu.auth.service.impl;
 import cn.hutool.core.util.RandomUtil;
 import com.quanxiaoha.framework.common.exception.BizException;
 import com.quanxiaoha.framework.common.response.Response;
-import com.quanxiaoha.xiaohashu.auth.constant.RedisKeyConstant;
+import com.quanxiaoha.xiaohashu.auth.constant.RedisKeyConstants;
 import com.quanxiaoha.xiaohashu.auth.enums.ResponseCodeEnum;
 import com.quanxiaoha.xiaohashu.auth.model.vo.verificationcode.SendVerificationCodeReqVO;
 import com.quanxiaoha.xiaohashu.auth.service.VerificationCodeService;
@@ -39,7 +39,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         // 获取手机号
         String phone = sendVerificationCodeReqVO.getPhone();
         // 构建验证码
-        String key = RedisKeyConstant.buildVerificationCodeKey(phone);
+        String key = RedisKeyConstants.buildVerificationCodeKey(phone);
 
         // 判断是否已发送验证码
         boolean exist = redisTemplate.hasKey(key);
@@ -61,7 +61,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
             aliyunSmsHelper.sendMessage(signName, templateCode, phone, templateParam);
         });
 
-        // // 存储验证码到 redis, 并设置过期时间为 3 分钟
+        // 存储验证码到 redis, 并设置过期时间为 3 分钟
         redisTemplate.opsForValue().set(key, verificationCode, 3, TimeUnit.MINUTES);
 
         return Response.success();
