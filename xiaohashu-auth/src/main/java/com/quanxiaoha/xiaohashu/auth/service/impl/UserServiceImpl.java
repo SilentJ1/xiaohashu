@@ -15,6 +15,7 @@ import com.quanxiaoha.xiaohashu.auth.domain.dataobject.PermissionDO;
 import com.quanxiaoha.xiaohashu.auth.domain.dataobject.RoleDO;
 import com.quanxiaoha.xiaohashu.auth.domain.dataobject.UserDO;
 import com.quanxiaoha.xiaohashu.auth.domain.dataobject.UserRoleDO;
+import com.quanxiaoha.xiaohashu.auth.domain.mapper.RoleDOMapper;
 import com.quanxiaoha.xiaohashu.auth.domain.mapper.UserDOMapper;
 import com.quanxiaoha.xiaohashu.auth.domain.mapper.UserRoleDOMapper;
 import com.quanxiaoha.xiaohashu.auth.enums.LoginTypeEnum;
@@ -30,6 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,6 +47,9 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private TransactionTemplate transactionTemplate;
+
+    @Resource
+    private RoleDOMapper roleDOMapper;
 
     @Override
     public Response<String> loginAndRegister(UserLoginReqVO userLoginReqVO) {
@@ -101,6 +106,14 @@ public class UserServiceImpl implements UserService {
         return Response.success(tokenInfo.tokenValue);
     }
 
+    @Override
+    public Response<?> logout(Long userId) {
+        // 退出用户（指定ID）
+        StpUtil.logout(userId);
+
+        return Response.success();
+    }
+
     /**
      * 系统自动注册
      * @param phone
@@ -139,10 +152,12 @@ public class UserServiceImpl implements UserService {
                         .build();
                 userRoleDOMapper.insert(userRoleDO);
 
-                // 将该用户的角色 ID 存入 Redis 中
-                List<Long> roles = Lists.newArrayList();
-                roles.add(RoleConstants.COMMON_USER_ROLE_ID);
-                String userRolesKey = RedisKeyConstants.buildUserRoleKey(phone);
+                RoleDO roleDO = roleDOMapper.selectByPrimaryKey(RoleConstants.COMMON_USER_ROLE_ID);
+                // 将该用户的角色 ID 存入 Redis 中，指定初始容量为 1，这样可以减少在扩容时的性能开销
+                List<String> roles = new ArrayList<>(1);
+                roles.add(roleDO.getRoleKey());
+
+                String userRolesKey = RedisKeyConstants.buildUserRoleKey(userId);
                 redisTemplate.opsForValue().set(userRolesKey, JsonUtils.toJsonString(roles));
 
                 return userId;
