@@ -14,10 +14,6 @@ public interface RolePermissionDOMapper {
 
     RolePermissionDO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(RolePermissionDO record);
-
-    int updateByPrimaryKey(RolePermissionDO record);
-
     /**
      * 根据角色 ID 集合批量查询
      *
@@ -25,4 +21,8 @@ public interface RolePermissionDOMapper {
      * @return
      */
     List<RolePermissionDO> selectByRoleIds(@Param("roleIds") List<Long> roleIds);
+
+    int updateByPrimaryKeySelective(RolePermissionDO record);
+
+    int updateByPrimaryKey(RolePermissionDO record);
 }
