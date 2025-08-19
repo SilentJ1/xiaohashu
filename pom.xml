@@ -20,6 +20,7 @@
     <module>xiaoha-framework</module>
     <!-- gateway网关服务 -->
     <module>xiaohashu-gateway</module>
+    <module>xiaoha-framework/xiaoha-spring-boot-starter-biz-context</module>
   </modules>
 
   <!-- 多模块项目需要配置打包方式为 pom -->
@@ -65,6 +66,8 @@
     <dysmsapi.version>2.0.24</dysmsapi.version>
     <!-- nacos -->
     <nacos-config.version>0.3.0-RC</nacos-config.version>
+    <!-- 阿里 TransmittableThreadLocal -->
+    <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
   </properties>
 
   <!-- 统一依赖管理 -->
@@ -196,6 +199,12 @@
         <groupId>com.alibaba.boot</groupId>
         <artifactId>nacos-config-spring-boot-starter</artifactId>
         <version>${nacos-config.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>transmittable-thread-local</artifactId>
+        <version>${transmittable-thread-local.version}</version>
       </dependency>
     </dependencies>
 
