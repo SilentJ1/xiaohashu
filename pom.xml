@@ -20,7 +20,8 @@
     <module>xiaoha-framework</module>
     <!-- gateway网关服务 -->
     <module>xiaohashu-gateway</module>
-    <module>xiaoha-framework/xiaoha-spring-boot-starter-biz-context</module>
+    <!-- 对象存储服务 -->
+    <module>xiaohashu-oss</module>
   </modules>
 
   <!-- 多模块项目需要配置打包方式为 pom -->

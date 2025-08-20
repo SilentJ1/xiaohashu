@@ -21,5 +21,7 @@
         <module>xiaoha-spring-boot-starter-biz-operationlog</module>
         <!-- 自定义的 Jackson -->
         <module>xiaoha-spring-boot-starter-jackson</module>
+        <module>xiaoha-spring-boot-starter-biz-context</module>
+
     </modules>
 </project>
