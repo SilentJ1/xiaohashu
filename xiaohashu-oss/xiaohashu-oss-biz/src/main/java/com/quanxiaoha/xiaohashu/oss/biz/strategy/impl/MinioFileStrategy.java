@@ -20,7 +20,6 @@ public class MinioFileStrategy implements FileStrategy {
     @Resource
     private MinioClient minioClient;
 
-
     @Override
     @SneakyThrows
     public String uploadFile(MultipartFile file, String bucketName) {

@@ -22,6 +22,7 @@
     <module>xiaohashu-gateway</module>
     <!-- 对象存储服务 -->
     <module>xiaohashu-oss</module>
+    <module>xiaohashu-user</module>
   </modules>
 
   <!-- 多模块项目需要配置打包方式为 pom -->
@@ -75,6 +76,7 @@
     <jaxb-api.version>2.3.1</jaxb-api.version>
     <activation.version>1.1.1</activation.version>
     <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
+    <feign-form.version>3.8.0</feign-form.version>
   </properties>
 
   <!-- 统一依赖管理 -->
@@ -136,6 +138,11 @@
         <version>${revision}</version>
       </dependency>
 
+      <dependency>
+        <groupId>com.quanxiaoha</groupId>
+        <artifactId>xiaoha-spring-boot-starter-biz-context</artifactId>
+        <version>${revision}</version>
+      </dependency>
       <!-- Mybatis -->
       <dependency>
         <groupId>org.mybatis.spring.boot</groupId>
@@ -244,6 +251,28 @@
         <artifactId>jaxb-runtime</artifactId>
         <version>${jaxb-runtime.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>com.quanxiaoha</groupId>
+        <artifactId>xiaohashu-oss-api</artifactId>
+        <version>${revision}</version>
+      </dependency>
+
+      <!-- Feign 表单提交 -->
+      <dependency>
+        <groupId>io.github.openfeign.form</groupId>
+        <artifactId>feign-form</artifactId>
+        <version>${feign-form.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.quanxiaoha</groupId>
+        <artifactId>xiaohashu-user-api</artifactId>
+        <version>${revision}</version>
+      </dependency>
+
+
+
     </dependencies>
 
 
