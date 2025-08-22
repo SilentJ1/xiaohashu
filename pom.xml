@@ -23,6 +23,8 @@
     <!-- 对象存储服务 -->
     <module>xiaohashu-oss</module>
     <module>xiaohashu-user</module>
+    <!-- KV 键值存储服务 -->
+    <module>xiaohashu-kv</module>
   </modules>
 
   <!-- 多模块项目需要配置打包方式为 pom -->
@@ -271,7 +273,11 @@
         <version>${revision}</version>
       </dependency>
 
-
+      <dependency>
+        <groupId>com.quanxiaoha</groupId>
+        <artifactId>xiaohashu-kv-api</artifactId>
+        <version>${revision}</version>
+      </dependency>
 
     </dependencies>
 
