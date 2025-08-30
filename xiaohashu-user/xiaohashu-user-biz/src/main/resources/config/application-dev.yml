@@ -53,3 +53,6 @@ spring:
         wall: # 防火墙
           config:
             multi-statement-allow: true
+logging:
+  level:
+    com.quanxiaoha.xiaohashu.note.biz.domain.mapper: debug

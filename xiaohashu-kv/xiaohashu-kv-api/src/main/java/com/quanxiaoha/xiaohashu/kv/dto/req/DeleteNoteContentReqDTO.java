@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class DeleteNoteContentReqDTO {
 
     @NotBlank(message = "笔记 ID 不能为空")
-    private String noteId;
+    private String uuid;
 
 }
 
