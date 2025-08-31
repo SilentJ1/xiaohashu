@@ -30,7 +30,6 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
     private AliyunSmsHelper aliyunSmsHelper;
 
     /**
-     *
      * @param sendVerificationCodeReqVO
      * @return
      */
@@ -43,7 +42,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
 
         // 判断是否已发送验证码
         boolean exist = redisTemplate.hasKey(key);
-        if(exist) {
+        if (exist) {
             throw new BizException(ResponseCodeEnum.VERIFICATION_CODE_SEND_FREQUENTLY);
         }
 

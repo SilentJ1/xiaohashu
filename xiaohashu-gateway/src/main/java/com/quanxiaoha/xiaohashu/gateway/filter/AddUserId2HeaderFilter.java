@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 @Component
 @Slf4j
 @Order(-90)
-public class AddUserId2HeaderFilter implements GlobalFilter{
+public class AddUserId2HeaderFilter implements GlobalFilter {
 
     /**
      * 请求头中，用户 ID 的键
@@ -21,7 +21,6 @@ public class AddUserId2HeaderFilter implements GlobalFilter{
     private static final String HEADER_USER_ID = "userId";
 
     /**
-     *
      * @param exchange
      * @param chain
      * @return

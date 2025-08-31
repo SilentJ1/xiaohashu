@@ -10,6 +10,7 @@ public class RedisKeyConstants {
 
     /**
      * 构建完整的笔记详情 KEY
+     *
      * @param noteId
      * @return
      */

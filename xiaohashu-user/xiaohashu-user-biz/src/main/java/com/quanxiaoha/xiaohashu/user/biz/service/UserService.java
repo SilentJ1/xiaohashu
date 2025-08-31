@@ -12,6 +12,7 @@ public interface UserService {
 
     /**
      * 更新用户信息
+     *
      * @param updateUserInfoReqVO
      * @return
      */
@@ -19,6 +20,7 @@ public interface UserService {
 
     /**
      * 用户注册
+     *
      * @param registerUserReqDTO
      * @return
      */

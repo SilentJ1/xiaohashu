@@ -24,6 +24,7 @@ public class RedisKeyConstants {
 
     /**
      * 构建验证码 KEY
+     *
      * @param phone
      * @return
      */
@@ -33,6 +34,7 @@ public class RedisKeyConstants {
 
     /**
      * 用户对应的角色集合 KEY
+     *
      * @param userId
      * @return
      */
@@ -42,6 +44,7 @@ public class RedisKeyConstants {
 
     /**
      * 构建角色对应的权限集合 KEY
+     *
      * @param roleKey
      * @return
      */

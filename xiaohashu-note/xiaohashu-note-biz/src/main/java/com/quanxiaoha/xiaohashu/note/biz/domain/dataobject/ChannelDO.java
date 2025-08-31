@@ -18,7 +18,7 @@ public class ChannelDO {
 
     private LocalDateTime createTime;
 
-    private LocalDateTime  updateTime;
+    private LocalDateTime updateTime;
 
     private Boolean isDeleted;
 

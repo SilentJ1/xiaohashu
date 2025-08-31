@@ -5,8 +5,11 @@ import com.quanxiaoha.xiaohashu.distributed.id.generator.biz.core.segment.model.
 import java.util.List;
 
 public interface IDAllocDao {
-     List<LeafAlloc> getAllLeafAllocs();
-     LeafAlloc updateMaxIdAndGetLeafAlloc(String tag);
-     LeafAlloc updateMaxIdByCustomStepAndGetLeafAlloc(LeafAlloc leafAlloc);
-     List<String> getAllTags();
+    List<LeafAlloc> getAllLeafAllocs();
+
+    LeafAlloc updateMaxIdAndGetLeafAlloc(String tag);
+
+    LeafAlloc updateMaxIdByCustomStepAndGetLeafAlloc(LeafAlloc leafAlloc);
+
+    List<String> getAllTags();
 }

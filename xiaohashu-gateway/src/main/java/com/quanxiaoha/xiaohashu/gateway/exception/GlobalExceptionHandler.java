@@ -2,7 +2,6 @@ package com.quanxiaoha.xiaohashu.gateway.exception;
 
 import cn.dev33.satoken.exception.NotLoginException;
 import cn.dev33.satoken.exception.NotPermissionException;
-import cn.dev33.satoken.exception.SaTokenException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.quanxiaoha.framework.common.response.Response;
 import com.quanxiaoha.xiaohashu.gateway.enums.ResponseCodeEnum;

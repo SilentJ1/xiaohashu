@@ -73,9 +73,9 @@ public class LeafMonitorController {
     /**
      * the output is like this:
      * {
-     *   "timestamp": "1567733700834(2019-09-06 09:35:00.834)",
-     *   "sequenceId": "3448",
-     *   "workerId": "39"
+     * "timestamp": "1567733700834(2019-09-06 09:35:00.834)",
+     * "sequenceId": "3448",
+     * "workerId": "39"
      * }
      */
     @RequestMapping(value = "decodeSnowflakeId")

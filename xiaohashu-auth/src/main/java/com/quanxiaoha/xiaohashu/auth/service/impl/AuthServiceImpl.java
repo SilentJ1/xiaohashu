@@ -56,7 +56,7 @@ public class AuthServiceImpl implements AuthService {
                 String sentCode = (String) redisTemplate.opsForValue().get(key);
 
                 // 判断与用户提交过来的验证码是否一致
-                if(!StringUtils.equals(verificationCode, sentCode)) {
+                if (!StringUtils.equals(verificationCode, sentCode)) {
                     throw new BizException(ResponseCodeEnum.VERIFICATION_CODE_ERROR);
                 }
 

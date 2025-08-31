@@ -9,6 +9,7 @@ public interface NoteService {
 
     /**
      * 笔记详情
+     *
      * @param findNoteDetailReqVO
      * @return
      */
@@ -16,6 +17,7 @@ public interface NoteService {
 
     /**
      * 笔记更新
+     *
      * @param updateNoteReqVO
      * @return
      */
@@ -23,12 +25,14 @@ public interface NoteService {
 
     /**
      * 删除本地笔记缓存
+     *
      * @param noteId
      */
     void deleteNoteLocalCache(Long noteId);
 
     /**
      * 删除笔记
+     *
      * @param deleteNoteReqVO
      * @return
      */
@@ -36,6 +40,7 @@ public interface NoteService {
 
     /**
      * 笔记仅对自己可见
+     *
      * @param updateNoteVisibleOnlyMeReqVO
      * @return
      */
@@ -43,6 +48,7 @@ public interface NoteService {
 
     /**
      * 笔记置顶 / 取消置顶
+     *
      * @param topNoteReqVO
      * @return
      */

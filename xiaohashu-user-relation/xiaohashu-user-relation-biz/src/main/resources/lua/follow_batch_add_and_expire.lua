@@ -7,7 +7,7 @@ local zaddArgs = {}
 -- 遍历 ARGV 参数，将分数和值按顺序插入到 zaddArgs 变量中
 for i = 1, #ARGV - 1, 2 do
     table.insert(zaddArgs, ARGV[i])      -- 分数（关注时间）
-    table.insert(zaddArgs, ARGV[i+1])    -- 值（关注的用户ID）
+    table.insert(zaddArgs, ARGV[i + 1])    -- 值（关注的用户ID）
 end
 
 -- 调用 ZADD 批量插入数据

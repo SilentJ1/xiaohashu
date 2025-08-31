@@ -8,6 +8,7 @@ public interface AuthService {
 
     /**
      * 登录与注册
+     *
      * @param userLoginReqVO
      * @return
      */
@@ -15,12 +16,14 @@ public interface AuthService {
 
     /**
      * 退出登录
+     *
      * @return
      */
     Response<?> logout();
 
     /**
      * 修改密码
+     *
      * @param updatePasswordReqVO
      * @return
      */

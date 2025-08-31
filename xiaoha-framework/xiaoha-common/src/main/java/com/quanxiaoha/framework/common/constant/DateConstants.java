@@ -27,5 +27,5 @@ public interface DateConstants {
     /**
      * DateTimeFormatter：年-月
      */
-    DateTimeFormatter DATE_FORMAT_Y_M =  DateTimeFormatter.ofPattern("yyyy-MM");
+    DateTimeFormatter DATE_FORMAT_Y_M = DateTimeFormatter.ofPattern("yyyy-MM");
 }

@@ -40,7 +40,7 @@ public class FindNoteDetailRspVO {
      * 编辑时间
      */
     private LocalDateTime updateTime;
-    
+
     /**
      * 是否可见
      */

@@ -14,6 +14,7 @@ public class RedisKeyConstants {
 
     /**
      * 构建角色对应的权限集合 KEY
+     *
      * @param roleKey
      * @return
      */
@@ -23,6 +24,7 @@ public class RedisKeyConstants {
 
     /**
      * 构建用户-角色 KEY
+     *
      * @param userId
      * @return
      */
