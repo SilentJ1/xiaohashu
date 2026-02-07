@@ -63,6 +63,7 @@ public class UserServiceImpl implements UserService {
             .maximumSize(10000) // 设置缓存的最大容量为 10000 个条目
             .expireAfterWrite(1, TimeUnit.HOURS) // 设置缓存条目在写入后 1 小时过期
             .build();
+
     @Resource
     private UserDOMapper userDOMapper;
     @Resource
@@ -293,7 +294,7 @@ public class UserServiceImpl implements UserService {
         // redis中存在
         if (StringUtils.isNotBlank(userInfoRedisValue)) {
             FindUserByIdRspDTO findUserByIdRspDTO = JsonUtils.parseObject(userInfoRedisValue, FindUserByIdRspDTO.class);
-            // 异步线程中将用户信息存储bendihuanc
+            // 异步线程中将用户信息存储本地缓存
             threadPoolTaskExecutor.submit(() -> {
                 if (Objects.nonNull(findUserByIdRspDTO)) {
                     LOCAL_CACHE.put(userId, findUserByIdRspDTO);

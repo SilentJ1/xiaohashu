@@ -45,6 +45,12 @@ public class CountFansConsumer implements RocketMQListener<String> { // TODO: Me
             .setConsumerEx(this::consumeMessage)
             .build();
 
+    @Override
+    public void onMessage(String body) {
+        // 往 bufferTrigger 中添加元素
+        bufferTrigger.enqueue(body);
+    }
+
     private void consumeMessage(List<String> bodys) {
         log.info("==> 聚合消息, size: {}", bodys.size());
         log.info("==> 聚合消息, {}", JsonUtils.toJsonString(bodys));
@@ -118,12 +124,5 @@ public class CountFansConsumer implements RocketMQListener<String> { // TODO: Me
             }
         });
     }
-
-    @Override
-    public void onMessage(String body) {
-        // 往 bufferTrigger 中添加元素
-        bufferTrigger.enqueue(body);
-    }
-
 
 }

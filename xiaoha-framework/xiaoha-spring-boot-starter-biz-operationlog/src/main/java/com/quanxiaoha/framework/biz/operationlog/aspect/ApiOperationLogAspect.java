@@ -13,8 +13,12 @@ import java.util.Arrays;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Aspect
-@Slf4j
+/**
+ * 接口操作日志切面
+ * 自动捕获 @ApiOperationLog 标记方法的执行信息，统一打印操作日志
+ */
+@Aspect // 标记为AOP切面类
+@Slf4j // 简化日志编写，替代LoggerFactory.getLogger
 public class ApiOperationLogAspect {
 
     /**
@@ -25,7 +29,7 @@ public class ApiOperationLogAspect {
     }
 
     /**
-     * 环绕
+     * 环绕通知：包裹目标方法执行，实现前置/后置日志记录
      *
      * @param joinPoint
      * @return
@@ -49,7 +53,7 @@ public class ApiOperationLogAspect {
         String description = getApiOperationLogDescription(joinPoint);
 
         // 打印请求相关参数
-        log.info("====== 请求开始: [{}], 入参: {}, 请求类: {}, 请求方法: {} =================================== ",
+        log.info("【接口操作日志-开始】功能描述：{} | 请求类：{} | 请求方法：{} | 入参：{}",
                 description, argsJsonStr, className, methodName);
 
         // 执行切点方法
@@ -59,14 +63,13 @@ public class ApiOperationLogAspect {
         long executionTime = System.currentTimeMillis() - startTime;
 
         // 打印出参等相关信息
-        log.info("====== 请求结束: [{}], 耗时: {}ms, 出参: {} =================================== ",
+        log.info("【接口操作日志-结束】功能描述：{} | 执行耗时：{}ms | 出参：{}",
                 description, executionTime, JsonUtils.toJsonString(result));
-
         return result;
     }
 
     /**
-     * 获取注解的描述信息
+     * 从连接点中解析 @ApiOperationLog 注解的描述信息
      *
      * @param joinPoint
      * @return
@@ -86,9 +89,9 @@ public class ApiOperationLogAspect {
     }
 
     /**
-     * 转 JSON 字符串
+     * 安全的对象转JSON字符串工具方法
+     * 捕获JSON转换异常，避免单个对象转换失败导致整个接口报错
      *
-     * @return
      */
     private Function<Object, String> toJsonStr() {
         return JsonUtils::toJsonString;

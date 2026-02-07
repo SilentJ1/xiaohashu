@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.quanxiaoha.xiaohashu.count.biz.domain.mapper.NoteLikeDOMapper">
-    <resultMap id="BaseResultMap" type="com.quanxiaoha.xiaohashu.count.biz.domain.dataobject.NoteLikeDO">
+<mapper namespace="com.quanxiaoha.xiaohashu.note.biz.domain.mapper.NoteLikeDOMapper">
+    <resultMap id="BaseResultMap" type="com.quanxiaoha.xiaohashu.note.biz.domain.dataobject.NoteLikeDO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="user_id" jdbcType="BIGINT" property="userId"/>
         <result column="note_id" jdbcType="BIGINT" property="noteId"/>
@@ -18,18 +18,46 @@
         from t_note_like
         where id = #{id,jdbcType=BIGINT}
     </select>
+    <select id="selectCountByUserIdAndNoteId" resultType="int" parameterType="map">
+        select count(1)
+        from t_note_like
+        where user_id = #{userId}
+          and note_id = #{noteId}
+          and status = 1 limit 1
+    </select>
+    <select id="selectByUserId" resultMap="BaseResultMap" parameterType="map">
+        select note_id
+        from t_note_like
+        where user_id = #{userId}
+          and status = 1
+    </select>
+    <select id="selectNoteIsLiked" parameterType="map" resultType="int">
+        select count(1)
+        from t_note_like
+        where user_id = #{userId}
+          and note_id = #{noteId}
+          and status = 1 limit 1
+    </select>
+    <select id="selectLikedByUserIdAndLimit" resultMap="BaseResultMap" parameterType="map">
+        select note_id, create_time
+        from t_note_like
+        where user_id = #{userId}
+          and status = 1
+        order by create_time desc limit #{limit}
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from t_note_like
         where id = #{id,jdbcType=BIGINT}
     </delete>
-    <insert id="insert" parameterType="com.quanxiaoha.xiaohashu.count.biz.domain.dataobject.NoteLikeDO">
+    <insert id="insert" parameterType="com.quanxiaoha.xiaohashu.note.biz.domain.dataobject.NoteLikeDO">
         insert into t_note_like (id, user_id, note_id,
                                  create_time, `status`)
         values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{noteId,jdbcType=BIGINT},
                 #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT})
     </insert>
-    <insert id="insertSelective" parameterType="com.quanxiaoha.xiaohashu.count.biz.domain.dataobject.NoteLikeDO">
+    <insert id="insertSelective" parameterType="com.quanxiaoha.xiaohashu.note.biz.domain.dataobject.NoteLikeDO">
         insert into t_note_like
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -66,8 +94,15 @@
             </if>
         </trim>
     </insert>
+    <insert id="insertOrUpdate" parameterType="com.quanxiaoha.xiaohashu.note.biz.domain.dataobject.NoteLikeDO">
+        INSERT INTO t_note_like (user_id, note_id, create_time, status)
+        VALUES (#{userId}, #{noteId}, #{createTime}, #{status}) ON DUPLICATE KEY
+        UPDATE
+            create_time = #{createTime}, status = #{status};
+    </insert>
+
     <update id="updateByPrimaryKeySelective"
-            parameterType="com.quanxiaoha.xiaohashu.count.biz.domain.dataobject.NoteLikeDO">
+            parameterType="com.quanxiaoha.xiaohashu.note.biz.domain.dataobject.NoteLikeDO">
         update t_note_like
         <set>
             <if test="userId != null">
@@ -85,7 +120,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.quanxiaoha.xiaohashu.count.biz.domain.dataobject.NoteLikeDO">
+    <update id="updateByPrimaryKey" parameterType="com.quanxiaoha.xiaohashu.note.biz.domain.dataobject.NoteLikeDO">
         update t_note_like
         set user_id     = #{userId,jdbcType=BIGINT},
             note_id     = #{noteId,jdbcType=BIGINT},
@@ -93,4 +128,14 @@
             `status`    = #{status,jdbcType=TINYINT}
         where id = #{id,jdbcType=BIGINT}
     </update>
+    <update id="update2UnlikeByUserIdAndNoteId"
+            parameterType="com.quanxiaoha.xiaohashu.note.biz.domain.dataobject.NoteLikeDO">
+        update t_note_like
+        set status      = #{status},
+            create_time = #{createTime}
+        where user_id = #{userId}
+          and note_id = #{noteId}
+          and status = 1
+    </update>
+
 </mapper>

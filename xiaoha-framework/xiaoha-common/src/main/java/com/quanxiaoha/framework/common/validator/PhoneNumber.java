@@ -36,6 +36,14 @@ public @interface PhoneNumber {
  * 即自定义注解 @PhoneNumber 使用 PhoneNumberValidator 类进行校验。
  * <p>
  * message 元素用于定义验证失败时的错误消息。在使用注解时可以覆盖默认消息。default 关键字用于提供该元素的默认值。
+ * @Retention 注解用于指定自定义注解的保留策略。
+ * RetentionPolicy.RUNTIME 表示该注解在运行时仍然可用（可以通过反射机制访问）。
+ * 这对于校验注解非常重要，因为校验框架需要在运行时读取注解并执行相应的校验逻辑。
+ * @Constraint 注解用于指定关联的验证器类。
+ * 在 @PhoneNumber 中，validatedBy 属性指向 PhoneNumberValidator.class，
+ * 即自定义注解 @PhoneNumber 使用 PhoneNumberValidator 类进行校验。
+ * <p>
+ * message 元素用于定义验证失败时的错误消息。在使用注解时可以覆盖默认消息。default 关键字用于提供该元素的默认值。
  */
 
 /**

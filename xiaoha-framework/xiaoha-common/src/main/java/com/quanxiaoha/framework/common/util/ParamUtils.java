@@ -8,21 +8,16 @@ import java.util.regex.Pattern;
  * @author quanxiaoha
  */
 public final class ParamUtils {
-    // 私有构造函数，防止实例化
-    private ParamUtils() {
-        throw new AssertionError("工具类不允许实例化");
-    }
-
-    // ============================== 校验昵称 ==============================
     /**
      * 昵称最小长度
      */
     private static final int NICK_NAME_MIN_LENGTH = 2;
+
+    // ============================== 校验昵称 ==============================
     /**
      * 昵称最大长度
      */
     private static final int NICK_NAME_MAX_LENGTH = 24;
-
     /**
      * 昵称中不允许出现的特殊字符正则表达式
      */
@@ -31,6 +26,29 @@ public final class ParamUtils {
      * 预编译昵称正则表达式，提高性能
      */
     private static final Pattern NICK_NAME_PATTERN = Pattern.compile(NICK_NAME_REGEX);
+    /**
+     * 小哈书号最小长度
+     */
+    private static final int ID_MIN_LENGTH = 6;
+    /**
+     * 小哈书号最大长度
+     */
+    private static final int ID_MAX_LENGTH = 15;
+
+    // ============================== 校验小哈书号 ==============================
+    /**
+     * 小哈书号正则表达式：只能包含字母、数字和下划线
+     */
+    private static final String ID_REGEX = "^[a-zA-Z0-9_]+$";
+    /**
+     * 预编译小哈书号正则表达式，提高性能
+     */
+    private static final Pattern ID_PATTERN = Pattern.compile(ID_REGEX);
+
+    // 私有构造函数，防止实例化
+    private ParamUtils() {
+        throw new AssertionError("工具类不允许实例化");
+    }
 
     /**
      * 昵称校验
@@ -56,25 +74,6 @@ public final class ParamUtils {
         // 检查是否含有特殊字符
         return !NICK_NAME_PATTERN.matcher(nickname).find();
     }
-
-    // ============================== 校验小哈书号 ==============================
-    /**
-     * 小哈书号最小长度
-     */
-    private static final int ID_MIN_LENGTH = 6;
-    /**
-     * 小哈书号最大长度
-     */
-    private static final int ID_MAX_LENGTH = 15;
-
-    /**
-     * 小哈书号正则表达式：只能包含字母、数字和下划线
-     */
-    private static final String ID_REGEX = "^[a-zA-Z0-9_]+$";
-    /**
-     * 预编译小哈书号正则表达式，提高性能
-     */
-    private static final Pattern ID_PATTERN = Pattern.compile(ID_REGEX);
 
     /**
      * 小哈书ID校验

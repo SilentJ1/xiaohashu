@@ -1,4 +1,4 @@
-package com.quanxiaoha.xiaohashu.count.biz.domain.dataobject;
+package com.quanxiaoha.xiaohashu.count.biz.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +11,22 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NoteCollectionDO {
-    private Long id;
+public class CountCollectUnCollectNoteMqDTO {
 
     private Long userId;
 
     private Long noteId;
 
+    /**
+     * 0: 取消收藏， 1：收藏
+     */
+    private Integer type;
+
     private LocalDateTime createTime;
 
-    private Integer status;
+    /**
+     * 笔记发布者 ID
+     */
+    private Long noteCreatorId;
 }
+
