@@ -60,4 +60,5 @@ public interface UserCountDOMapper {
      * @return
      */
     int insertOrUpdateNoteTotalByUserId(@Param("count") Long count, @Param("userId") Long userId);
+
 }

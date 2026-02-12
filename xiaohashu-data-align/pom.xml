@@ -97,6 +97,11 @@
             <artifactId>rocketmq-spring-boot-starter</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.quanxiaoha</groupId>
+            <artifactId>xiaohashu-search-api</artifactId>
+        </dependency>
+
 
     </dependencies>
 

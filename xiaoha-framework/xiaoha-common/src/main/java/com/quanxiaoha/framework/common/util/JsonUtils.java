@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class JsonUtils {
 
@@ -92,5 +93,20 @@ public class JsonUtils {
                 return OBJECT_MAPPER.getTypeFactory().constructCollectionType(List.class, clazz);
             }
         }.getType());
+    }
+
+    /**
+     * 将 JSON 字符串解析为指定类型的 Set 对象
+     *
+     * @param jsonStr
+     * @param clazz
+     * @param <T>
+     * @return
+     * @throws Exception
+     */
+    public static <T> Set<T> parseSet(String jsonStr, Class<T> clazz) throws Exception {
+        CollectionType setType = OBJECT_MAPPER.getTypeFactory()
+                .constructCollectionType(Set.class, clazz);
+        return OBJECT_MAPPER.readValue(jsonStr, setType);
     }
 }
